@@ -26,4 +26,19 @@ public class LoginPage {
         WebElement inputPasswordWebElement = webDriver.findElement(By.xpath(LoginXpath.INPUT_PASSWORD_XPATH));
         inputPasswordWebElement.sendKeys(password);
     }
+
+    public String getTextEnterEmail() {
+        WebElement errorMessageEnterEmailWebElement = webDriver.findElement(By.xpath(LoginXpath.ERROR_MESSAGE_ENTER_EMAIL_XPATH));
+        return errorMessageEnterEmailWebElement.getText();
+    }
+
+    public String getTextEnterPassword() {
+        WebElement errorMessageEnterPasswordWebElement = webDriver.findElement(By.xpath(LoginXpath.ERROR_MESSAGE_ENTER_PASSWORD_XPATH));
+        return errorMessageEnterPasswordWebElement.getText();
+    }
+
+    public String getTextInvalidLoginOrPassword() {
+        WebElement invalidLoginOrPasswordWebElement = webDriver.findElement(By.xpath(LoginXpath.INVALID_LOGIN_OR_PASSWORD_XPATH));
+        return invalidLoginOrPasswordWebElement.getText();
+    }
 }
