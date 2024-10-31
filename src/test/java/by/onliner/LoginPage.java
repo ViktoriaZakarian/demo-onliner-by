@@ -41,4 +41,14 @@ public class LoginPage {
         WebElement invalidLoginOrPasswordWebElement = webDriver.findElement(By.xpath(LoginXpath.INVALID_LOGIN_OR_PASSWORD_XPATH));
         return invalidLoginOrPasswordWebElement.getText();
     }
+
+    public void clickEntrance() {
+        WebElement entranceWebElement = webDriver.findElement(By.xpath(LoginXpath.ENTRANCE_XPATH));
+        entranceWebElement.click();
+    }
+
+    public void clickAcceptAllCookies() {
+        WebElement acceptAllCookiesWebElement = webDriver.findElement(By.xpath(LoginXpath.BUTTON_ACCEPT_ALL_COOKIES_XPATH));
+        acceptAllCookiesWebElement.click();
+    }
 }
