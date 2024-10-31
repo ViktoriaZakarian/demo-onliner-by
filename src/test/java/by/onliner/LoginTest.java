@@ -1,5 +1,6 @@
 package by.onliner;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,27 @@ public class LoginTest {
         loginPage.clickButtonEnter();
 
         Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_PASSWORD, loginPage.getTextEnterPassword());
+    }
+
+    @Test
+    void emptyLoginTest() {
+        loginPage.sendKeysInputPassword("fbbffb");
+        loginPage.clickButtonEnter();
+
+        Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_EMAIL, loginPage.getTextEnterEmail());
+    }
+
+    @Test
+    public void filledOutFormWithIncorrectDataTest() {
+        loginPage.sendKeysInputEmail("zkr.vkr@gmail.com");
+        loginPage.sendKeysInputPassword("bvdsbvu");
+        loginPage.clickButtonEnter();
+
+        Assertions.assertEquals(LoginMessage.INVALID_LOGIN_OR_PASSWORD, loginPage.getTextInvalidLoginOrPassword());
+    }
+
+    @AfterEach
+    public void tearDown() {
+        webDriver.quit();
     }
 }
