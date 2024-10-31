@@ -26,4 +26,12 @@ public class LoginTest {
         Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_EMAIL, loginPage.getTextEnterEmail());
         Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_PASSWORD, loginPage.getTextEnterPassword());
     }
+
+    @Test
+    public void emptyPasswordTest() {
+        loginPage.sendKeysInputEmail("zakarianviktoria@gmail.com");
+        loginPage.clickButtonEnter();
+
+        Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_PASSWORD, loginPage.getTextEnterPassword());
+    }
 }
