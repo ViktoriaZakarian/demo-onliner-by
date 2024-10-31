@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 public class LoginTest {
 
     WebDriver webDriver;
@@ -15,6 +17,7 @@ public class LoginTest {
     @BeforeEach
     public void setup() {
         webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         webDriver.get("https://www.onliner.by/");
 
         loginPage = new LoginPage(webDriver);
@@ -22,6 +25,8 @@ public class LoginTest {
 
     @Test
     public void emptyLoginEmptyPasswordTest() {
+        loginPage.clickEntrance();
+        loginPage.clickAcceptAllCookies();
         loginPage.clickButtonEnter();
 
         Assertions.assertEquals(LoginMessage.ERROR_MESSAGE_ENTER_EMAIL, loginPage.getTextEnterEmail());
@@ -30,6 +35,8 @@ public class LoginTest {
 
     @Test
     public void emptyPasswordTest() {
+        loginPage.clickAcceptAllCookies();
+        loginPage.clickEntrance();
         loginPage.sendKeysInputEmail("zakarianviktoria@gmail.com");
         loginPage.clickButtonEnter();
 
@@ -38,6 +45,8 @@ public class LoginTest {
 
     @Test
     void emptyLoginTest() {
+        loginPage.clickAcceptAllCookies();
+        loginPage.clickEntrance();
         loginPage.sendKeysInputPassword("fbbffb");
         loginPage.clickButtonEnter();
 
@@ -46,6 +55,8 @@ public class LoginTest {
 
     @Test
     public void filledOutFormWithIncorrectDataTest() {
+        loginPage.clickAcceptAllCookies();
+        loginPage.clickEntrance();
         loginPage.sendKeysInputEmail("zkr.vkr@gmail.com");
         loginPage.sendKeysInputPassword("bvdsbvu");
         loginPage.clickButtonEnter();
